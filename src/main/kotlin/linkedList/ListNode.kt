@@ -31,7 +31,8 @@ fun createNode(array: IntArray): ListNode {
 fun reverseNode(head: ListNode): ListNode {
     if (head.next == null) return head
 //    return reverseListByStack(head)
-    return reverseListByIteration(head)
+//    return reverseListByIteration(head)
+    return reverseListByRecursive(head)!!
 }
 
 
