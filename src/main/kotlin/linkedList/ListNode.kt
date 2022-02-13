@@ -90,20 +90,46 @@ fun reverseListByIteration(head: ListNode): ListNode {
 
 
 /**
- * 假设1-2-3-4-5                    head.next?.next = head    head.next = null;
- * 🔽 head = 1   🔼   newHead = 5      2.next = 1               1.head = null        newHead:5-4-3-2-1-null    head:1-null
- * 🔽 head = 2   🔼   newHead = 5      3.next = 2               2.head = null        newHead:5-4-3-2-null     head:1-2-null
- * 🔽 head = 3   🔼   newHead = 5      4.next = 3               3.head = null        newHead:5-4-3-null      head:1-2-3-null
- * 🔽 head = 4   🔼   newHead = 5      5.next = 4               4.next = null        newHead:5-4-null       head:1-2-3-4-null
- * 🔽 head = 5   🔼
  *
+ * 递归方式翻转链表
+ * 参考 [https://leetcode-cn.com/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-by-leetcode-solution-d1k2/]
+ *
+ * Demo
+ *
+ * reverseList: head=1
+ *      reverseList: head=2
+ *          reverseList: head=3
+ *              reverseList:head=4
+ *                  reverseList:head=5
+ *                              终止返回
+ *                      cur = 5
+ *                      4.next.next->4，即5->4
+ *                  cur=5
+ *                  3.next.next->3，即4->3
+ *          cur = 5
+ *          2.next.next->2，即3->2
+ *  cur = 5
+ *  1.next.next->1，即2->1
+ *  最后返回cur
+ *
+ *  时间复杂度：O(n)，其中 n 是链表的长度。需要对链表的每个节点进行反转操作。
+ *  空间复杂度：O(n)，其中 n 是链表的长度。空间复杂度主要取决于递归调用的栈空间，最多为 n 层。
+ *
+ *
+ *  *********************** 递归解释******************
+ *  1. 结束条件
+ *  2. 递过程 （递归调用前面代码）
+ *  3. 递归调用
+ *  4. 归过程 （递归调用后面代码）
  */
 fun reverseListByRecursive(head: ListNode?): ListNode? {
+    // 递归终止条件
     if (head?.next == null) {
         return head;
     }
     val newHead: ListNode? = reverseListByRecursive(head.next);
+    /// 归过程 （交换指针）
     head.next?.next = head;
-    head.next = null;
-    return newHead;
+    head.next = null//避免形成环
+    return newHead
 }
