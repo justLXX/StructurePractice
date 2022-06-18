@@ -20,9 +20,9 @@ fun IntArray.println(content: String = "") {
 val ARRAY_CASE1 = intArrayOf(3, 2, 4, 6, 4, 5, 7, 8, 1)
 
 
-fun IntArray.swap(index1: Int, index2: Int) {
+fun swap(array: IntArray, index1: Int, index2: Int) {
     if (index1 == index2) return
-    var temp = this[index1]
-    this[index1] = this[index2]
-    this[index2] = temp
+    var temp = array[index1]
+    array[index1] = array[index2]
+    array[index2] = temp
 }

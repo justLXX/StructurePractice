@@ -41,7 +41,7 @@ fun flagQuestion(array: IntArray, target: Int) {
         if (array[pre] <= target) {
             pre++
         } else {
-            array.swap(pre, end)
+            swap(array, pre, end)
             end--
         }
     }
@@ -58,7 +58,7 @@ fun flagQuestionRecursion(array: IntArray, target: Int, pre: Int, end: Int) {
         preVar++
         flagQuestionRecursion(array, target, preVar, endVar)
     } else {
-        array.swap(pre, end)
+        swap(array, pre, end)
         endVar--
         flagQuestionRecursion(array, target, preVar, endVar)
     }
@@ -85,7 +85,7 @@ fun flagQuestion1(array: IntArray, target: Int) {
     while (current < array.size) {
         if (array[current] <= target) {
             pre++
-            array.swap(pre, current++)
+            swap(array, pre, current++)
         } else {
             current++
         }
@@ -103,11 +103,11 @@ fun flagQuestion2(array: IntArray, target: Int) {
     var current = 0
     while (current < end) {
         if (array[current] < target) {
-            array.swap(++pre, current++)
+            swap(array, ++pre, current++)
         } else if (array[current] == target) {
             current++
         } else {
-            array.swap(--end, current)
+            swap(array, --end, current)
         }
     }
 
